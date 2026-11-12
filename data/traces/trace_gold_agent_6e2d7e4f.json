@@ -1,0 +1,42 @@
+[
+  {
+    "agent": "gold_agent",
+    "run_id": "6e2d7e4f-acdf-4f0d-9b08-3584c24cdd82",
+    "started_at": "2026-11-11T14:21:28.920666+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\silver_layer\\products_silver.parquet",
+        "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\silver_layer\\sales_data_silver.parquet",
+        "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\silver_layer\\stores_silver.parquet"
+      ],
+      "sttm_path": "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\sttm\\sttm_gold_6e2d7e4f.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 11.095,
+    "status": "failed",
+    "error": "datetime64 type does not support operation 'sum'"
+  },
+  {
+    "agent": "gold_agent",
+    "run_id": "6e2d7e4f-acdf-4f0d-9b08-3584c24cdd82",
+    "started_at": "2026-11-11T14:43:42.364900+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\silver_layer\\products_silver.parquet",
+        "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\silver_layer\\sales_data_silver.parquet",
+        "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\silver_layer\\stores_silver.parquet"
+      ],
+      "sttm_path": "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\sttm\\sttm_gold_6e2d7e4f.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 11.634,
+    "status": "failed",
+    "error": "datetime64 type does not support operation 'sum'"
+  }
+]

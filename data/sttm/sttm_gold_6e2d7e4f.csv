@@ -1,0 +1,20 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+gold,gold_highest_sell_products_by_store,,gold,gold_highest_sell_products_by_store,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,stores_silver,store_id,gold,gold_highest_sell_products_by_store,store_id,Direct,Passthrough from silver stores table
+silver,stores_silver,store_name,gold,gold_highest_sell_products_by_store,store_name,Direct,Passthrough from silver stores table
+silver,stores_silver,region,gold,gold_highest_sell_products_by_store,region,Direct,Passthrough from silver stores table
+silver,stores_silver,city,gold,gold_highest_sell_products_by_store,city,Direct,Passthrough from silver stores table
+silver,stores_silver,state,gold,gold_highest_sell_products_by_store,state,Direct,Passthrough from silver stores table
+silver,sales_data_silver,product_id,gold,gold_highest_sell_products_by_store,product_id,Direct,Passthrough from silver sales table
+silver,sales_data_silver,product_name,gold,gold_highest_sell_products_by_store,product_name,Direct,Passthrough from silver sales table
+silver,sales_data_silver,category,gold,gold_highest_sell_products_by_store,category,Direct,Passthrough from silver sales table
+silver,sales_data_silver,quantity,gold,gold_highest_sell_products_by_store,total_quantity_sold,Indirect,SUM(quantity) aggregated by store_id and product_id to determine highest selling products
+silver,sales_data_silver,total_amount,gold,gold_highest_sell_products_by_store,total_sales_amount,Indirect,SUM(total_amount) aggregated by store_id and product_id to rank highest selling products by revenue
+silver,sales_data_silver,unit_price,gold,gold_highest_sell_products_by_store,unit_price,Direct,Passthrough average unit price from silver sales table
+silver,products_silver,standard_price,gold,gold_highest_sell_products_by_store,standard_price,Direct,Passthrough from silver products table
+silver,sales_data_silver,store_id,gold,gold_highest_sell_products_by_store,fk_store_id,Indirect,Join key: sales_data_silver.store_id = stores_silver.store_id
+silver,sales_data_silver,product_id,gold,gold_highest_sell_products_by_store,fk_product_id,Indirect,Join key: sales_data_silver.product_id = products_silver.product_id
+silver,sales_data_silver,transaction_date,gold,gold_highest_sell_products_by_store,transaction_date,Direct,Passthrough from silver sales table for temporal analysis
+silver,sales_data_silver,customer_segment,gold,gold_highest_sell_products_by_store,customer_segment,Direct,Passthrough from silver sales table for segment analysis
+gold,gold_highest_sell_products_by_store,total_quantity_sold,gold,gold_highest_sell_products_by_store,sales_rank_by_quantity,Indirect,ROW_NUMBER() PARTITION BY store_id ORDER BY total_quantity_sold DESC to rank products within each store
+gold,gold_highest_sell_products_by_store,total_sales_amount,gold,gold_highest_sell_products_by_store,sales_rank_by_revenue,Indirect,ROW_NUMBER() PARTITION BY store_id ORDER BY total_sales_amount DESC to rank products within each store by revenue

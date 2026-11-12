@@ -1,0 +1,20 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+silver,,,gold,highest_selling_products,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,sales_data_silver,product_id,gold,highest_selling_products,product_id,Direct,Passthrough from sales_data_silver
+silver,sales_data_silver,product_name,gold,highest_selling_products,product_name,Direct,Passthrough from sales_data_silver
+silver,sales_data_silver,category,gold,highest_selling_products,category,Direct,Passthrough from sales_data_silver
+silver,sales_data_silver,quantity,gold,highest_selling_products,quantity,Indirect,Cast from datetime64[ns] to numeric; extract numeric quantity value for aggregation
+silver,sales_data_silver,unit_price,gold,highest_selling_products,unit_price,Indirect,Cast from datetime64[ns] to numeric; extract numeric unit price value
+silver,sales_data_silver,total_amount,gold,highest_selling_products,total_amount,Indirect,Cast from datetime64[ns] to numeric; extract numeric total amount value for sales aggregation
+silver,sales_data_silver,transaction_id,gold,highest_selling_products,transaction_id,Direct,Passthrough from sales_data_silver
+silver,sales_data_silver,transaction_date,gold,highest_selling_products,transaction_date,Direct,Passthrough from sales_data_silver; handle NaT values
+silver,sales_data_silver,store_id,gold,highest_selling_products,store_id,Direct,Passthrough from sales_data_silver; foreign key to stores_silver
+silver,sales_data_silver,customer_segment,gold,highest_selling_products,customer_segment,Direct,Passthrough from sales_data_silver
+silver,sales_data_silver,payment_method,gold,highest_selling_products,payment_method,Direct,Passthrough from sales_data_silver
+silver,stores_silver,store_id,gold,highest_selling_products,store_id,Direct,Join key: sales_data_silver.store_id = stores_silver.store_id
+silver,stores_silver,store_name,gold,highest_selling_products,store_name,Direct,Passthrough from stores_silver via join on store_id
+silver,stores_silver,region,gold,highest_selling_products,region,Direct,Passthrough from stores_silver via join on store_id
+silver,stores_silver,city,gold,highest_selling_products,city,Direct,Passthrough from stores_silver via join on store_id
+silver,stores_silver,state,gold,highest_selling_products,state,Direct,Passthrough from stores_silver via join on store_id
+silver,sales_data_silver,,gold,highest_selling_products,total_sales_by_product,Indirect,"Aggregate SUM(total_amount) grouped by product_id, product_name to identify highest selling product"
+silver,sales_data_silver,,gold,highest_selling_products,total_units_sold_by_product,Indirect,"Aggregate SUM(quantity) grouped by product_id, product_name for volume analysis"

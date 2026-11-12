@@ -1,0 +1,17 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+landing,sales_data,transaction_id,bronze,sales_data,transaction_id,passthrough,Copy as-is; preserve nulls (4.3% null rate) for quality tracking; no validation or transformation applied at Bronze layer
+landing,sales_data,transaction_date,bronze,sales_data,transaction_date,passthrough,Copy as-is; preserve mixed formats (MM/DD/YYYY and YYYY-MM-DD) without conversion at Bronze layer; standardization deferred to Silver
+landing,sales_data,store_id,bronze,sales_data,store_id,passthrough,Copy as-is; preserve nulls (2.69% null rate); no join resolution or imputation at Bronze layer
+landing,sales_data,product_id,bronze,sales_data,product_id,passthrough,Copy as-is; no nulls detected; no transformation applied
+landing,sales_data,product_name,bronze,sales_data,product_name,passthrough,Copy as-is; no nulls detected; no transformation applied
+landing,sales_data,category,bronze,sales_data,category,passthrough,Copy as-is; preserve 21 unique values (potential data quality issue with cardinality mismatch vs 20 products); no validation at Bronze layer
+landing,sales_data,quantity,bronze,sales_data,quantity,passthrough,Copy as int64; preserve negative values (-4 to +8 range indicating returns/adjustments); no filtering or sign correction at Bronze layer
+landing,sales_data,unit_price,bronze,sales_data,unit_price,passthrough,"Copy as float64; preserve full range ($0.01 to $9,999.99); no validation or outlier handling at Bronze layer"
+landing,sales_data,total_amount,bronze,sales_data,total_amount,passthrough,"Copy as float64; preserve negative values (-$1,230.56 to +$9,999.99); no recalculation or validation at Bronze layer"
+landing,sales_data,customer_segment,bronze,sales_data,customer_segment,passthrough,"Copy as-is; preserve 16 unique values (Loyal, Premium, etc.); no standardization or validation at Bronze layer"
+landing,sales_data,payment_method,bronze,sales_data,payment_method,passthrough,"Copy as-is; preserve 4 distinct values (Apple Pay, PayPal, etc.); no normalization at Bronze layer"
+landing,stores,store_id,bronze,stores,store_id,passthrough,Copy as-is; no nulls detected; primary key identifier; no transformation applied
+landing,stores,store_name,bronze,stores,store_name,passthrough,Copy as-is; no nulls detected; 10 unique descriptive store names; no transformation applied
+landing,stores,region,bronze,stores,region,passthrough,Copy as-is; no nulls detected; 4 distinct geographic regions; no transformation applied
+landing,stores,city,bronze,stores,city,passthrough,Copy as-is; no nulls detected; 10 unique city names; no transformation applied
+landing,stores,state,bronze,stores,state,passthrough,Copy as-is; no nulls detected; 9 distinct state abbreviations; no transformation applied

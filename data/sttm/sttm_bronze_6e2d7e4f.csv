@@ -1,0 +1,21 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+landing,products,product_id,bronze,products,product_id,direct_copy,"Copy as-is; primary key, no nulls, string type preserved"
+landing,products,product_name,bronze,products,product_name,direct_copy,"Copy as-is; no nulls, string type preserved"
+landing,products,category,bronze,products,category,direct_copy,"Copy as-is; no nulls, string type preserved; 5 unique categories"
+landing,products,standard_price,bronze,products,standard_price,direct_copy,"Copy as-is; no nulls, float64 type preserved; range 12.99-999.99"
+landing,sales_data,transaction_id,bronze,sales_data,transaction_id,null_handling,Copy as-is; 8 nulls (4.3%); retain null markers for Bronze audit trail; prefix TXN/RET indicates transaction type
+landing,sales_data,transaction_date,bronze,sales_data,transaction_date,format_standardization,Copy as string; detect mixed formats (MM/DD/YYYY and YYYY-MM-DD); tag for standardization in Silver layer; do not transform at Bronze
+landing,sales_data,store_id,bronze,sales_data,store_id,null_handling,Copy as-is; 5 nulls (2.69%); retain null markers; likely online/unknown location transactions
+landing,sales_data,product_id,bronze,sales_data,product_id,direct_copy,Copy as-is; foreign key reference to products.product_id; no nulls; 20 unique products
+landing,sales_data,product_name,bronze,sales_data,product_name,direct_copy,Copy as-is; denormalized product name; no nulls; 20 unique products
+landing,sales_data,category,bronze,sales_data,category,anomaly_flag,"Copy as-is; flag for Bronze audit: 21 unique values (vs 5 in products.category) suggests misspellings or inconsistencies (e.g., 'Sport' vs 'Sports'); retain all variants for Silver validation"
+landing,sales_data,quantity,bronze,sales_data,quantity,anomaly_flag,Copy as-is; int64 type preserved; flag negative values (-4 to -1) as returns/reversals; range -4 to 8 units
+landing,sales_data,unit_price,bronze,sales_data,unit_price,anomaly_flag,Copy as-is; float64 type preserved; flag extreme outliers: min 0.01 and max 9999.99; 172 unique values indicate transaction-level pricing variations (promotions/discounts)
+landing,sales_data,total_amount,bronze,sales_data,total_amount,anomaly_flag,Copy as-is; float64 type preserved; flag negative values (-1230.56 to positive); range aligns with quantity/unit_price; validate calculation logic in Silver
+landing,sales_data,customer_segment,bronze,sales_data,customer_segment,anomaly_flag,"Copy as-is; 16 unique values suggest inconsistent coding or misspellings; expected cardinality typically 3-5 (Loyal, Premium, etc.); flag for audit"
+landing,sales_data,payment_method,bronze,sales_data,payment_method,direct_copy,"Copy as-is; 4 unique values (clean enumeration): Apple Pay, PayPal, etc.; no nulls"
+landing,stores,store_id,bronze,stores,store_id,direct_copy,"Copy as-is; primary key, no nulls; 10 unique store identifiers (S01-S10)"
+landing,stores,store_name,bronze,stores,store_name,direct_copy,Copy as-is; no nulls; 10 unique values (1:1 mapping with store_id)
+landing,stores,region,bronze,stores,region,direct_copy,"Copy as-is; no nulls; 4 unique regions (Northeast, Southeast, etc.)"
+landing,stores,city,bronze,stores,city,direct_copy,Copy as-is; no nulls; 10 unique cities (1:1 mapping with store_id)
+landing,stores,state,bronze,stores,state,direct_copy,"Copy as-is; no nulls; 9 unique state abbreviations (NY, MA, PA, GA, FL, etc.)"

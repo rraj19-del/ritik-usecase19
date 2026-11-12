@@ -1,0 +1,16 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+landing,products,product_id,bronze,products,product_id,direct_load,Copy as-is; maintain string type; no nulls present
+landing,products,product_name,bronze,products,product_name,direct_load,Copy as-is; maintain string type; no nulls present
+landing,products,category,bronze,products,category,direct_load,Copy as-is; maintain string type; no nulls present
+landing,products,standard_price,bronze,products,standard_price,direct_load,Copy as-is; maintain float64 type; no nulls present; range 12.99-999.99
+landing,sales_data,transaction_id,bronze,sales_data,transaction_id,direct_load,Copy as-is; maintain string type; preserve 8 nulls (4.3%); note format inconsistency (TXN/RET prefix)
+landing,sales_data,transaction_date,bronze,sales_data,transaction_date,direct_load,Copy as-is; maintain string type; preserve format inconsistency (MM/DD/YYYY vs YYYY-MM-DD) for Bronze intent-agnostic storage
+landing,sales_data,store_id,bronze,sales_data,store_id,direct_load,Copy as-is; maintain string type; preserve 5 nulls (2.69%)
+landing,sales_data,product_id,bronze,sales_data,product_id,direct_load,Copy as-is; maintain string type; no nulls present; foreign key reference to products.product_id
+landing,sales_data,product_name,bronze,sales_data,product_name,direct_load,Copy as-is; maintain string type; denormalized value captured at transaction time; no nulls present
+landing,sales_data,category,bronze,sales_data,category,direct_load,Copy as-is; maintain string type; preserve denormalized category from transaction time; no nulls present; note cardinality mismatch with products.category
+landing,sales_data,quantity,bronze,sales_data,quantity,direct_load,Copy as-is; maintain int64 type; preserve negative values (-4 to 8) representing returns/refunds; no nulls present
+landing,sales_data,unit_price,bronze,sales_data,unit_price,direct_load,Copy as-is; maintain float64 type; preserve as-is variance from standard_price due to discounts/promotions; range 0.01-9999.99; no nulls present
+landing,sales_data,total_amount,bronze,sales_data,total_amount,direct_load,Copy as-is; maintain float64 type; preserve negative values aligned with return transactions; range -1230.56 to 9999.99; no nulls present
+landing,sales_data,customer_segment,bronze,sales_data,customer_segment,direct_load,"Copy as-is; maintain string type; preserve 16 unique customer classifications (Loyal, Premium, etc.); no nulls present"
+landing,sales_data,payment_method,bronze,sales_data,payment_method,direct_load,"Copy as-is; maintain string type; preserve 4 distinct payment methods (Apple Pay, PayPal, etc.); no nulls present"

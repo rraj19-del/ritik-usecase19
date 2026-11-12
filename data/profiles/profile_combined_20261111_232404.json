@@ -1,0 +1,407 @@
+{
+  "files": [
+    "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\landing\\sales_data.csv",
+    "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\landing\\stores.csv"
+  ],
+  "datasets": {
+    "sales_data": {
+      "file": "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\landing\\sales_data.csv",
+      "shape": {
+        "rows": 186,
+        "columns": 11
+      },
+      "columns": {
+        "transaction_id": {
+          "dtype": "str",
+          "null_count": 8,
+          "null_pct": 4.3,
+          "unique_count": 166,
+          "sample_values": [
+            "TXN10046",
+            "TXN10078",
+            "RET10009",
+            "RET10004",
+            "TXN10077"
+          ]
+        },
+        "transaction_date": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 116,
+          "sample_values": [
+            "01/15/2024",
+            "2024-01-17",
+            "2024-03-03",
+            "2024-02-20",
+            "2024-01-05"
+          ]
+        },
+        "store_id": {
+          "dtype": "str",
+          "null_count": 5,
+          "null_pct": 2.69,
+          "unique_count": 10,
+          "sample_values": [
+            "S09",
+            "S10",
+            "S07",
+            "S06",
+            "S08"
+          ]
+        },
+        "product_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 20,
+          "sample_values": [
+            "P001",
+            "P014",
+            "P012",
+            "P012",
+            "P016"
+          ]
+        },
+        "product_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 20,
+          "sample_values": [
+            "iPhone 15",
+            "TRX Resistance Bands",
+            "Nespresso Machine",
+            "Nespresso Machine",
+            "CamelBak Water Bottle"
+          ]
+        },
+        "category": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 21,
+          "sample_values": [
+            "Electronics",
+            "Sport",
+            "Home & Kitchen",
+            "Home & Kitchen",
+            "Sports"
+          ]
+        },
+        "quantity": {
+          "dtype": "int64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 11,
+          "min": -4.0,
+          "max": 8.0,
+          "mean": 3.9408602150537635
+        },
+        "unit_price": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 172,
+          "min": 0.01,
+          "max": 9999.99,
+          "mean": 356.27005376344084
+        },
+        "total_amount": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 172,
+          "min": -1230.56,
+          "max": 9999.99,
+          "mean": 1215.24311827957
+        },
+        "customer_segment": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 16,
+          "sample_values": [
+            "Loyal",
+            "Premium",
+            "Loyal",
+            "Premium",
+            "Loyal"
+          ]
+        },
+        "payment_method": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 4,
+          "sample_values": [
+            "Apple Pay",
+            "PayPal",
+            "Apple Pay",
+            "Apple Pay",
+            "PayPal"
+          ]
+        }
+      }
+    },
+    "stores": {
+      "file": "C:\\Users\\rraj19\\Downloads\\IDAMP\\IDAMP\\data\\landing\\stores.csv",
+      "shape": {
+        "rows": 10,
+        "columns": 5
+      },
+      "columns": {
+        "store_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 10,
+          "sample_values": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ]
+        },
+        "store_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 10,
+          "sample_values": [
+            "Downtown Flagship",
+            "Westfield Mall",
+            "Harbor View",
+            "Peach Tree Center",
+            "Bayfront Store"
+          ]
+        },
+        "region": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 4,
+          "sample_values": [
+            "Northeast",
+            "Northeast",
+            "Northeast",
+            "Southeast",
+            "Southeast"
+          ]
+        },
+        "city": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 10,
+          "sample_values": [
+            "New York",
+            "Boston",
+            "Philadelphia",
+            "Atlanta",
+            "Miami"
+          ]
+        },
+        "state": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 9,
+          "sample_values": [
+            "NY",
+            "MA",
+            "PA",
+            "GA",
+            "FL"
+          ]
+        }
+      }
+    }
+  },
+  "analysis": {
+    "run_id": "dede71e1-647d-40b0-a39b-8e04c0fe0bce",
+    "profiling_timestamp": "2024",
+    "semantic_meanings": {
+      "sales_data": {
+        "transaction_id": "Unique transaction identifier (TXN/RET prefix); 4.3% null rate indicates data quality issue",
+        "transaction_date": "Transaction date in mixed format (MM/DD/YYYY and YYYY-MM-DD); 116 distinct dates across ~5 months",
+        "store_id": "Foreign key reference to stores table; 2.69% null rate; 10 distinct stores (S01-S10)",
+        "product_id": "Unique product identifier; 20 distinct products; no nulls",
+        "product_name": "Descriptive product name; 20 products across Electronics, Sport, Home & Kitchen categories",
+        "category": "Product category classification; 21 unique values suggest data quality issue (category/product mismatch)",
+        "quantity": "Transaction quantity sold; ranges -4 to +8 (negative indicates returns/adjustments); mean 3.94",
+        "unit_price": "Price per unit; ranges $0.01 to $9,999.99; mean $356.27 (high variance suggests diverse product mix)",
+        "total_amount": "Transaction total amount (quantity \u00d7 unit_price); ranges -$1,230.56 to +$9,999.99 (negatives for returns)",
+        "customer_segment": "Customer classification; 16 unique values (Loyal, Premium, etc.); categorical dimension",
+        "payment_method": "Payment mode used; 4 distinct methods (Apple Pay, PayPal, etc.); low cardinality"
+      },
+      "stores": {
+        "store_id": "Unique store identifier; 10 stores; primary key; matches sales_data.store_id",
+        "store_name": "Descriptive store location name; 10 unique values; natural key component",
+        "region": "Geographic region classification; 4 distinct regions (Northeast, Southeast, etc.)",
+        "city": "City location; 10 distinct cities; geographic dimension",
+        "state": "State abbreviation; 9 distinct states; geographic dimension"
+      }
+    },
+    "join_keys": [
+      {
+        "left_dataset": "sales_data",
+        "left_column": "store_id",
+        "right_dataset": "stores",
+        "right_column": "store_id",
+        "confidence": "high",
+        "notes": "Natural join key; sales_data has 10 unique store_id values matching all 10 stores in stores table. However, 5 nulls in sales_data.store_id will result in unmatched records."
+      }
+    ],
+    "quality_observations": [
+      {
+        "severity": "HIGH",
+        "dataset": "sales_data",
+        "column": "transaction_id",
+        "issue": "Missing values (8 records, 4.3% null rate) and lower cardinality (166 unique vs 186 rows) indicates potential duplicates or null transactions",
+        "recommendation": "Investigate null transaction_ids before Bronze layer; may require rejection or default ID generation"
+      },
+      {
+        "severity": "HIGH",
+        "dataset": "sales_data",
+        "column": "store_id",
+        "issue": "Missing values (5 records, 2.69% null rate) will cause join failures with stores table",
+        "recommendation": "Handle nulls via left outer join or imputation strategy; document orphaned records"
+      },
+      {
+        "severity": "MEDIUM",
+        "dataset": "sales_data",
+        "column": "transaction_date",
+        "issue": "Mixed date formats (MM/DD/YYYY and YYYY-MM-DD); 0% nulls but requires standardization",
+        "recommendation": "Standardize to ISO 8601 (YYYY-MM-DD) format in Bronze layer; validate date range (Jan-Mar 2024)"
+      },
+      {
+        "severity": "MEDIUM",
+        "dataset": "sales_data",
+        "column": "category",
+        "issue": "21 unique categories but only 20 products suggests category-product mismatch or inconsistency",
+        "recommendation": "Validate category-product mapping; may indicate category misspelling or orphaned categories"
+      },
+      {
+        "severity": "MEDIUM",
+        "dataset": "sales_data",
+        "column": "quantity",
+        "issue": "Negative quantities detected (min: -4); represents returns/adjustments mixed with sales",
+        "recommendation": "Flag returns separately; consider transaction_type indicator in Silver layer"
+      },
+      {
+        "severity": "MEDIUM",
+        "dataset": "sales_data",
+        "column": "total_amount",
+        "issue": "Negative amounts (-$1,230.56 min) and extreme outliers ($9,999.99 max); high variance (mean $1,215.24)",
+        "recommendation": "Apply outlier detection and validation; consider amount sign and quantity correlation"
+      },
+      {
+        "severity": "LOW",
+        "dataset": "sales_data",
+        "column": "unit_price",
+        "issue": "Extreme range ($0.01 to $9,999.99) with very high variance; may indicate data entry errors",
+        "recommendation": "Flag and validate price outliers in Bronze; analyze pricing by category"
+      },
+      {
+        "severity": "LOW",
+        "dataset": "sales_data",
+        "column": "customer_segment",
+        "issue": "16 unique segment values suggests high granularity or potential data quality issues (expected 3-5 typical segments)",
+        "recommendation": "Validate segment cardinality; may indicate partial segments or data anomalies"
+      },
+      {
+        "severity": "NONE",
+        "dataset": "stores",
+        "column": "all",
+        "issue": "No quality issues detected; clean reference data with 10 stores, 4 regions, 10 cities, 9 states",
+        "recommendation": "Can be used as-is for Bronze layer; no transformations required"
+      }
+    ],
+    "data_statistics_summary": {
+      "sales_data": {
+        "total_rows": 186,
+        "total_columns": 11,
+        "null_records": 8,
+        "duplicate_check": "transaction_id cardinality (166) < rows (186) indicates 20 potential duplicates or nulls",
+        "date_range": "January - March 2024 (mixed format)",
+        "numeric_summary": {
+          "quantity": {
+            "min": -4,
+            "max": 8,
+            "mean": 3.94,
+            "range": 12
+          },
+          "unit_price": {
+            "min": 0.01,
+            "max": 9999.99,
+            "mean": 356.27,
+            "range": 9999.98
+          },
+          "total_amount": {
+            "min": -1230.56,
+            "max": 9999.99,
+            "mean": 1215.24,
+            "range": 11230.55
+          }
+        }
+      },
+      "stores": {
+        "total_rows": 10,
+        "total_columns": 5,
+        "null_records": 0,
+        "cardinality": {
+          "store_id": 10,
+          "region": 4,
+          "city": 10,
+          "state": 9
+        }
+      }
+    },
+    "bronze_sttm_readiness": {
+      "ready_for_bronze": true,
+      "blocking_issues": 0,
+      "high_severity_issues": 2,
+      "transformation_requirements": [
+        "Standardize transaction_date format (MM/DD/YYYY \u2192 YYYY-MM-DD)",
+        "Handle 5 null store_ids (reject, default, or unknown store)",
+        "Handle 8 null transaction_ids (generate new IDs or reject)",
+        "Validate category-product mapping (21 categories vs 20 products)",
+        "Add transaction_type column to distinguish sales (+quantity) from returns (-quantity)",
+        "Validate unit_price and total_amount against business rules (price ranges, amount sign correlation)",
+        "Add data quality flags for records with negative amounts or anomalous quantities"
+      ],
+      "recommended_bronze_transformations": [
+        {
+          "column": "transaction_date",
+          "operation": "parse_and_standardize",
+          "target_format": "YYYY-MM-DD",
+          "action": "handle_mixed_formats"
+        },
+        {
+          "column": "store_id",
+          "operation": "handle_nulls",
+          "action": "outer_join_with_stores",
+          "null_handling": "retain_and_flag"
+        },
+        {
+          "column": "transaction_id",
+          "operation": "handle_nulls",
+          "action": "generate_surrogate_id_or_reject",
+          "pattern": "TXN/RET prefix expected"
+        },
+        {
+          "column": "quantity",
+          "operation": "derive_transaction_type",
+          "logic": "positive = SALE, negative = RETURN"
+        },
+        {
+          "column": "total_amount",
+          "operation": "validate_correlation",
+          "check": "sign_matches_quantity_sign"
+        }
+      ]
+    }
+  }
+}
